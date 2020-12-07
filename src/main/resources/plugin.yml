@@ -1,0 +1,10 @@
+name: Lobbycore
+version: ${project.version}
+main: me.pljr.lobbycore.LobbyCore
+api-version: 1.16
+depend: [ PLJRApi, ItemCommands ]
+authors: [ 9hx ]
+description: Core plugin for DCMC lobbies.
+commands:
+  hideplayers:
+    description: Command for hiding/showing players.

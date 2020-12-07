@@ -1,0 +1,32 @@
+locations:
+  spawn:
+    world: "lobbyworld"
+    x: 0
+    y: 0
+    z: 0
+    yaw: 0
+    pitch: 0
+# From item commands
+items:
+  selector: 4
+  links: 7
+disabled-events:
+  drop: true
+  inv-click: true
+  break: true
+  place: true
+  hunger: true
+  damage: true
+  weather: true
+settings:
+  double-jump: true
+sounds:
+  double-jump:
+    type: BAT_TAKEOFF
+    volume: 1
+    pitch: -5
+lang:
+  boss-bar: "§a§lOBCHOD §6§lSTORE.DIAMONDCREW.CZ"
+npcs: []
+
+
