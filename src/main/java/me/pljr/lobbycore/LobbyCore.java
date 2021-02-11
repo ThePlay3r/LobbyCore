@@ -6,7 +6,7 @@ import me.pljr.lobbycore.listeners.DisabledListener;
 import me.pljr.lobbycore.listeners.DoubleJumpListener;
 import me.pljr.lobbycore.listeners.PlayerInteractEntityListener;
 import me.pljr.lobbycore.listeners.PlayerJoinListener;
-import me.pljr.pljrapi.managers.ConfigManager;
+import me.pljr.pljrapispigot.managers.ConfigManager;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -27,7 +27,7 @@ public final class LobbyCore extends JavaPlugin {
     public void setupConfig(){
         saveDefaultConfig();
         reloadConfig();
-        this.configManager = new ConfigManager(getConfig(), "§cLobbyCore:", "config.yml");
+        this.configManager = new ConfigManager(this, "config.yml");
         CfgItems.load(configManager);
         CfgDisabledEvents.load(configManager);
         CfgLang.load(configManager);

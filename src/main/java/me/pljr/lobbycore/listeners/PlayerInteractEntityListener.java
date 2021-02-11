@@ -1,7 +1,7 @@
 package me.pljr.lobbycore.listeners;
 
 import me.pljr.lobbycore.config.CfgNpcs;
-import me.pljr.pljrapi.utils.BungeeUtil;
+import me.pljr.pljrapispigot.utils.BungeeUtil;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

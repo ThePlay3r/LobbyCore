@@ -1,7 +1,7 @@
 package me.pljr.lobbycore.config;
 
 import me.pljr.lobbycore.enums.Lang;
-import me.pljr.pljrapi.managers.ConfigManager;
+import me.pljr.pljrapispigot.managers.ConfigManager;
 
 import java.util.HashMap;
 

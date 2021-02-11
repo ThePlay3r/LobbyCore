@@ -5,10 +5,10 @@ import me.pljr.lobbycore.config.CfgLang;
 import me.pljr.lobbycore.config.CfgLocations;
 import me.pljr.lobbycore.enums.Lang;
 import me.pljr.lobbycore.enums.Locations;
-import me.pljr.pljrapi.adventure.bossbar.BossBar;
-import me.pljr.pljrapi.utils.BossBarUtil;
-import me.pljr.pljrapi.utils.MiniMessageUtil;
-import me.pljr.pljrapi.utils.PlayerUtil;
+import me.pljr.pljrapispigot.kyori.adventure.bossbar.BossBar;
+import me.pljr.pljrapispigot.utils.BossBarUtil;
+import me.pljr.pljrapispigot.utils.MiniMessageUtil;
+import me.pljr.pljrapispigot.utils.PlayerUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -29,7 +29,7 @@ public class PlayerJoinListener implements Listener {
             playerInventory.setItem(entry.getKey(), entry.getValue());
         }
         player.updateInventory();
-        PlayerUtil.teleport(player, CfgLocations.list.get(Locations.SPAWN), false);
+        player.teleport(CfgLocations.list.get(Locations.SPAWN));
         player.setAllowFlight(true);
         BossBarUtil.show(player, BossBar.bossBar(MiniMessageUtil.parse(CfgLang.list.get(Lang.BOSS_BAR)), 1f, BossBar.Color.RED, BossBar.Overlay.PROGRESS));
     }

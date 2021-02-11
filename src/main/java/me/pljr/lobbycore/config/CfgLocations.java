@@ -1,7 +1,7 @@
 package me.pljr.lobbycore.config;
 
 import me.pljr.lobbycore.enums.Locations;
-import me.pljr.pljrapi.managers.ConfigManager;
+import me.pljr.pljrapispigot.managers.ConfigManager;
 import org.bukkit.Location;
 
 import java.util.HashMap;

@@ -1,6 +1,6 @@
 package me.pljr.lobbycore.config;
 
-import me.pljr.pljrapi.managers.ConfigManager;
+import me.pljr.pljrapispigot.managers.ConfigManager;
 import org.bukkit.configuration.ConfigurationSection;
 
 import java.util.HashMap;

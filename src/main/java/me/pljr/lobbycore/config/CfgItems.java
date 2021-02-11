@@ -1,7 +1,7 @@
 package me.pljr.lobbycore.config;
 
 import me.pljr.itemcommands.objects.CommandItem;
-import me.pljr.pljrapi.managers.ConfigManager;
+import me.pljr.pljrapispigot.managers.ConfigManager;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 

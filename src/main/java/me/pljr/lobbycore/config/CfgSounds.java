@@ -1,8 +1,8 @@
 package me.pljr.lobbycore.config;
 
 import me.pljr.lobbycore.enums.Sounds;
-import me.pljr.pljrapi.managers.ConfigManager;
-import me.pljr.pljrapi.objects.PLJRSound;
+import me.pljr.pljrapispigot.managers.ConfigManager;
+import me.pljr.pljrapispigot.objects.PLJRSound;
 
 import java.util.HashMap;
 
