@@ -1,9 +1,7 @@
 package me.pljr.lobbycore.listeners;
 
-import me.pljr.lobbycore.config.CfgDisabledEvents;
-import me.pljr.lobbycore.config.CfgLocations;
-import me.pljr.lobbycore.enums.DisabledEvents;
-import me.pljr.lobbycore.enums.Locations;
+import me.pljr.lobbycore.config.DisabledEvent;
+import me.pljr.lobbycore.config.CfgLocation;
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,13 +18,13 @@ public class DisabledListener implements Listener {
     @EventHandler
     public void onDrop(PlayerDropItemEvent event){
         if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
-        event.setCancelled(CfgDisabledEvents.list.get(DisabledEvents.DROP));
+        event.setCancelled(DisabledEvent.DROP.get());
     }
 
     @EventHandler
     public void onInvClick(InventoryClickEvent event){
         if (event.getWhoClicked().getGameMode() == GameMode.CREATIVE) return;
-        event.setCancelled(CfgDisabledEvents.list.get(DisabledEvents.INV_CLICK));
+        event.setCancelled(DisabledEvent.INV_CLICK.get());
         /*if (event.getWhoClicked() instanceof Player){
             int slot = event.getRawSlot();
             if (CfgItems.itemSlots.contains(slot)){
@@ -38,30 +36,30 @@ public class DisabledListener implements Listener {
     @EventHandler
     public void onBreak(BlockBreakEvent event){
         if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
-        event.setCancelled(CfgDisabledEvents.list.get(DisabledEvents.BREAK));
+        event.setCancelled(DisabledEvent.BREAK.get());
     }
 
     @EventHandler
     public void onPlace(BlockPlaceEvent event){
         if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
-        event.setCancelled(CfgDisabledEvents.list.get(DisabledEvents.PLACE));
+        event.setCancelled(DisabledEvent.PLACE.get());
     }
 
     @EventHandler
     public void onHunger(FoodLevelChangeEvent event){
-        event.setCancelled(CfgDisabledEvents.list.get(DisabledEvents.HUNGER));
+        event.setCancelled(DisabledEvent.HUNGER.get());
     }
 
     @EventHandler
     public void onWeather(WeatherChangeEvent event){
-        if (CfgDisabledEvents.list.get(DisabledEvents.WEATHER) && event.toWeatherState()) event.setCancelled(true);
+        if (DisabledEvent.WEATHER.get() && event.toWeatherState()) event.setCancelled(true);
     }
 
     @EventHandler
     public void onDamage(EntityDamageEvent event){
-        event.setCancelled(CfgDisabledEvents.list.get(DisabledEvents.DAMAGE));
+        event.setCancelled(DisabledEvent.DAMAGE.get());
         if (event.getCause() == EntityDamageEvent.DamageCause.VOID){
-            event.getEntity().teleport(CfgLocations.list.get(Locations.SPAWN));
+            event.getEntity().teleport(CfgLocation.SPAWN.get());
         }
     }
 }

@@ -1,5 +1,7 @@
 package me.pljr.lobbycore.config;
 
+import lombok.Getter;
+import me.pljr.itemcommands.ItemCommands;
 import me.pljr.itemcommands.objects.CommandItem;
 import me.pljr.pljrapispigot.managers.ConfigManager;
 import org.bukkit.configuration.ConfigurationSection;
@@ -9,14 +11,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class CfgItems {
-    public static HashMap<Integer, ItemStack> items;
-    public static List<Integer> itemSlots;
+@Getter
+public class Items {
+    private final HashMap<Integer, ItemStack> items;
+    private final List<Integer> itemSlots;
 
-    public static void load(ConfigManager config){
+    public Items(ConfigManager config){
         items = new HashMap<>();
         itemSlots = new ArrayList<>();
-        HashMap<String, CommandItem> setItems = me.pljr.itemcommands.config.CfgItems.items;
+        ItemCommands itemCommands = ItemCommands.getPlugin(ItemCommands.class);
+        HashMap<String, CommandItem> setItems = itemCommands.getItems().getItems();
         ConfigurationSection csItems = config.getConfigurationSection("items");
         if (csItems == null) return;
         for (String item : csItems.getKeys(false)){

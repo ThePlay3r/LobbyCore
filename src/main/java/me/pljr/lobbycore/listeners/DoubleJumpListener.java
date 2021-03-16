@@ -1,16 +1,20 @@
 package me.pljr.lobbycore.listeners;
 
+import lombok.AllArgsConstructor;
 import me.pljr.lobbycore.LobbyCore;
-import me.pljr.lobbycore.config.CfgSounds;
-import me.pljr.lobbycore.enums.Sounds;
+import me.pljr.lobbycore.config.CfgSound;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
+import org.bukkit.plugin.java.JavaPlugin;
 
+@AllArgsConstructor
 public class DoubleJumpListener implements Listener {
+
+    private final JavaPlugin plugin;
 
     @EventHandler
     public void onDoubleJump(PlayerToggleFlightEvent event){
@@ -21,9 +25,7 @@ public class DoubleJumpListener implements Listener {
         event.setCancelled(true);
         player.setAllowFlight(false);
         player.setVelocity(player.getLocation().getDirection().multiply(1.5).setY(1));
-        CfgSounds.list.get(Sounds.DOUBLE_JUMP).play(player);
-        Bukkit.getScheduler().runTaskLaterAsynchronously(LobbyCore.getInstance(), ()->{
-            Bukkit.getScheduler().runTask(LobbyCore.getInstance(), () -> player.setAllowFlight(true));
-        }, 20*2);
+        CfgSound.DOUBLE_JUMP.get().play(player);
+        Bukkit.getScheduler().runTaskLater(plugin, ()-> player.setAllowFlight(true), 20*2);
     }
 }

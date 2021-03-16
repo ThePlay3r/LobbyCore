@@ -1,14 +1,12 @@
 package me.pljr.lobbycore.listeners;
 
-import me.pljr.lobbycore.config.CfgItems;
-import me.pljr.lobbycore.config.CfgLang;
-import me.pljr.lobbycore.config.CfgLocations;
-import me.pljr.lobbycore.enums.Lang;
-import me.pljr.lobbycore.enums.Locations;
-import me.pljr.pljrapispigot.kyori.adventure.bossbar.BossBar;
+import lombok.AllArgsConstructor;
+import me.pljr.lobbycore.config.Items;
+import me.pljr.lobbycore.config.Lang;
+import me.pljr.lobbycore.config.CfgLocation;
 import me.pljr.pljrapispigot.utils.BossBarUtil;
 import me.pljr.pljrapispigot.utils.MiniMessageUtil;
-import me.pljr.pljrapispigot.utils.PlayerUtil;
+import net.kyori.adventure.bossbar.BossBar;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,19 +16,22 @@ import org.bukkit.inventory.PlayerInventory;
 
 import java.util.Map;
 
+@AllArgsConstructor
 public class PlayerJoinListener implements Listener {
+
+    private final Items items;
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
         PlayerInventory playerInventory = player.getInventory();
         playerInventory.clear();
-        for (Map.Entry<Integer, ItemStack> entry : CfgItems.items.entrySet()){
+        for (Map.Entry<Integer, ItemStack> entry : items.getItems().entrySet()){
             playerInventory.setItem(entry.getKey(), entry.getValue());
         }
         player.updateInventory();
-        player.teleport(CfgLocations.list.get(Locations.SPAWN));
+        player.teleport(CfgLocation.SPAWN.get());
         player.setAllowFlight(true);
-        BossBarUtil.show(player, BossBar.bossBar(MiniMessageUtil.parse(CfgLang.list.get(Lang.BOSS_BAR)), 1f, BossBar.Color.RED, BossBar.Overlay.PROGRESS));
+        BossBarUtil.show(player, BossBar.bossBar(MiniMessageUtil.parse(Lang.BOSS_BAR.get()), 1f, BossBar.Color.RED, BossBar.Overlay.PROGRESS));
     }
 }
